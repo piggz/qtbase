@@ -33,9 +33,11 @@ BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(libsystemd-journal)
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -510,6 +512,10 @@ MAKEFLAGS=%{?_smp_mflags} \
 %ifarch aarch64
 	-no-pch \
 %endif
+%ifarch %{ix86} x86_64
+    -kms \
+    -gbm \
+%endif
     -qreal float \
     -journald
 fi # config.status check
@@ -891,6 +897,9 @@ ln -s %{_sysconfdir}/xdg/qtchooser/5.conf %{buildroot}%{_sysconfdir}/xdg/qtchoos
 %{_libdir}/qt5/plugins/platforms/libqeglfs.so
 %if %{with X11}
 %{_libdir}/qt5/plugins/egldeviceintegrations/libqeglfs-x11-integration.so
+%endif
+%ifarch %{ix86} x86_64
+%{_libdir}/qt5/plugins/egldeviceintegrations/libqeglfs-kms-integration.so
 %endif
 %{_datadir}/qt5/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri
 
