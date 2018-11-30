@@ -23,9 +23,13 @@ Source1:    macros.qt5-default
 Source100:  qtbase-rpmlintrc
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(egl)
+#BuildRequires:  pkgconfig(egl)
+# FIXME: This is not ideal
+BuildRequires:  mesa-i915-libEGL-devel
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glesv2)
+#BuildRequires:  pkgconfig(glesv2)
+# FIXME: This is not ideal
+BuildRequires:  mesa-i915-libGLESv2-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libpng)
