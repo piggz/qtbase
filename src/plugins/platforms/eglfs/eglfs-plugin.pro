@@ -4,6 +4,9 @@ QT += platformsupport-private eglfs_device_lib-private
 
 SOURCES += $$PWD/qeglfsmain.cpp
 
+# Avoid X11 header collision
+DEFINES += MESA_EGL_NO_X11_HEADERS
+
 OTHER_FILES += $$PWD/eglfs.json
 
 PLUGIN_TYPE = platforms
