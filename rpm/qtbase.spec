@@ -24,12 +24,10 @@ Source100:  qtbase-rpmlintrc
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 #BuildRequires:  pkgconfig(egl)
-# FIXME: This is not ideal
-BuildRequires:  mesa-i915-libEGL-devel
+BuildRequires:  libEGL-devel
 BuildRequires:  pkgconfig(freetype2)
 #BuildRequires:  pkgconfig(glesv2)
-# FIXME: This is not ideal
-BuildRequires:  mesa-i915-libGLESv2-devel
+BuildRequires:  libGLESv2-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libpng)
@@ -516,10 +514,8 @@ MAKEFLAGS=%{?_smp_mflags} \
 %ifarch aarch64
 	-no-pch \
 %endif
-%ifarch %{ix86} x86_64
     -kms \
     -gbm \
-%endif
     -qreal float \
     -journald
 fi # config.status check
