@@ -712,6 +712,8 @@ void QEvdevTouchScreenData::reportPoints()
     // Map the coordinates based on the normalized position. QPA expects 'area'
     // to be in screen coordinates.
     const int pointCount = m_touchPoints.count();
+    qDebug() << "QEvdevTouchScreenData::reportPoints" << pointCount;
+
     for (int i = 0; i < pointCount; ++i) {
         QWindowSystemInterface::TouchPoint &tp(m_touchPoints[i]);
 
@@ -721,6 +723,9 @@ void QEvdevTouchScreenData::reportPoints()
         const qreal wx = winRect.left() + tp.normalPosition.x() * (winRect.width() - 1);
         const qreal wy = winRect.top() + tp.normalPosition.y() * (winRect.height() - 1);
         const qreal sizeRatio = (winRect.width() + winRect.height()) / qreal(hw_w + hw_h);
+        
+        qDebug() << tp.area << tp.normalPosition << tp.state << tp.rawPositions;
+        
         if (tp.area.width() == -1) // touch major was not provided
             tp.area = QRectF(0, 0, 8, 8);
         else
