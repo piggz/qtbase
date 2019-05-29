@@ -53,6 +53,7 @@ BuildRequires:  sharutils
 #BuildRequires:  gdb
 BuildRequires:  python
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(libinput)
 
 %description
 Qt is a cross-platform application and UI framework. Using Qt, you can
@@ -231,6 +232,13 @@ Summary:    tuio touch generic plugin
 Requires:   %{name}-qtcore = %{version}-%{release}
 
 %description plugin-generic-tuiotouch
+This package contains tuio touch plugins
+
+%package plugin-generic-libinput
+Summary:    libinput generic plugin
+Requires:   %{name}-qtcore = %{version}-%{release}
+
+%description plugin-generic-libinput
 This package contains tuio touch plugins
 
 
@@ -517,7 +525,8 @@ MAKEFLAGS=%{?_smp_mflags} \
     -kms \
     -gbm \
     -qreal float \
-    -journald
+    -journald \
+    -libinput
 fi # config.status check
 #%if ! 0%{?qt5_release_build}
 #    -developer-build \
@@ -932,6 +941,10 @@ ln -s %{_sysconfdir}/xdg/qtchooser/5.conf %{buildroot}%{_sysconfdir}/xdg/qtchoos
 %files plugin-generic-tuiotouch
 %defattr(-,root,root,-)
 %{_libdir}/qt5/plugins/generic/libqtuiotouchplugin.so
+
+%files plugin-generic-libinput
+%defattr(-,root,root,-)
+%{_libdir}/qt5/plugins/generic/libqlibinputplugin.so
 
 %files -n qt5-default
 %defattr(-,root,root,-)
