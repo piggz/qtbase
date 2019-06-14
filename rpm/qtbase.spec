@@ -900,10 +900,7 @@ ln -s %{_sysconfdir}/xdg/qtchooser/5.conf %{buildroot}%{_sysconfdir}/xdg/qtchoos
 %{_libdir}/qt5/plugins/egldeviceintegrations/libqeglfs-x11-integration.so
 %endif
 %{_libdir}/qt5/plugins/egldeviceintegrations/libqeglfs-kms-integration.so
-#This looks wrong, egldevice is for tegra
-%ifarch %{ix86} x86_64
 %{_libdir}/qt5/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so
-%endif
 %{_datadir}/qt5/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri
 
 %files plugin-platform-minimalegl
