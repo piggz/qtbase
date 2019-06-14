@@ -23,10 +23,10 @@ Source1:    macros.qt5-default
 Source100:  qtbase-rpmlintrc
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
-#BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  libEGL-devel
 BuildRequires:  pkgconfig(freetype2)
-#BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  libGLESv2-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(icu-uc)
