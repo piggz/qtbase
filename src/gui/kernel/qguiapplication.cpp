@@ -1665,6 +1665,8 @@ bool QGuiApplicationPrivate::processNativeEvent(QWindow *window, const QByteArra
 
 void QGuiApplicationPrivate::processWindowSystemEvent(QWindowSystemInterfacePrivate::WindowSystemEvent *e)
 {
+    qDebug() << "QGuiApplicationPrivate::processWindowSystemEvent";
+    
     switch(e->type) {
     case QWindowSystemInterfacePrivate::FrameStrutMouse:
     case QWindowSystemInterfacePrivate::Mouse:
@@ -2352,6 +2354,8 @@ Q_GUI_EXPORT bool operator==(const QGuiApplicationPrivate::ActiveTouchPointsKey 
 
 void QGuiApplicationPrivate::processTouchEvent(QWindowSystemInterfacePrivate::TouchEvent *e)
 {
+    qDebug() << "QGuiApplicationPrivate::processTouchEvent";
+    
     QGuiApplicationPrivate *d = self;
     modifier_buttons = e->modifiers;
 

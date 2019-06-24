@@ -412,6 +412,7 @@ void QWindowSystemInterfacePrivate::postWindowSystemEvent(WindowSystemEvent *ev)
 */
 bool QWindowSystemInterfacePrivate::handleWindowSystemEvent(QWindowSystemInterfacePrivate::WindowSystemEvent *ev)
 {
+    qDebug() << "QWindowSystemInterfacePrivate::handleWindowSystemEvent";
     bool accepted = true;
     if (synchronousWindowSystemEvents) {
         if (QThread::currentThread() == QGuiApplication::instance()->thread()) {
@@ -525,6 +526,8 @@ QList<QWindowSystemInterface::TouchPoint>
 void QWindowSystemInterface::handleTouchEvent(QWindow *tlw, ulong timestamp, QTouchDevice *device,
                                               const QList<TouchPoint> &points, Qt::KeyboardModifiers mods)
 {
+    qDebug() << "QWindowSystemInterface::handleTouchEvent";
+    
     if (!points.size()) // Touch events must have at least one point
         return;
 
